@@ -1,6 +1,6 @@
 let firstCard = Math.floor(Math.random() * 11 ) + 2;
 let secondCard = Math.floor(Math.random() * 11 ) + 2;
-
+let cards = [firstCard,secondCard];
 let sum = firstCard + secondCard;
 console.log(sum);
 
@@ -13,7 +13,10 @@ let cardsEl = document.getElementById("cards-el");
 
 let messageEL = document.getElementById("message-el");
 function startGame(){
-    cardsEl.textContent = "Cards: " + firstCard + " " + secondCard;
+    renderGame();
+}
+function renderGame(){
+    cardsEl.textContent = "Cards: " + cards[0] + " " + cards[1];
     sumEl.textContent = "Sum is: " + sum;
     if (sum <= 20) {
         message = "Do you want to draw a new card?";
@@ -27,10 +30,11 @@ function startGame(){
     messageEL.textContent = message;
 }
 function newCard(){
-    console.log("Drawing a new card from the desk!")
     let card = Math.floor(Math.random() * 11 ) + 2;
     sum += card;
-    startGame();
+    cards.push(newCard);
+    renderGame();
 }
+
 
 
